@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "Rectangle.h"
 
-Rectangle::Rectangle(Point leftTop, Point rightBottom)
-	:leftTop(leftTop)
-	, rightBottom(rightBottom)
+Rectangle::Rectangle(vector<vector<int>> points)
+	:leftTop(points[0][0], points[0][1])
+	, rightBottom(points[1][0], points[1][1])
 	, width(rightBottom.getX() - leftTop.getX())
 	, height(rightBottom.getY() - leftTop.getY())
 {
@@ -17,6 +17,8 @@ int Rectangle::getArea(){
 	return width*height;
 }
 
-void Rectangle::draw() {
-
-}
+/*
+void Rectangle::draw(RenderWindow &window) {
+	RectangleShape rectangle(sf::Vector2f(width, height));
+	rectangle.setFillColor(sf::Color::Blue);
+}*/
