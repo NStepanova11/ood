@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Circle.h"
-#include <cmath>
+
 
 Circle::Circle(Point c, int r)
 	:center(c)
@@ -17,5 +17,4 @@ int Circle::getArea() {
 }
 
 void Circle::draw() {
-
 }

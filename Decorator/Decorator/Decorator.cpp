@@ -2,15 +2,42 @@
 #include <iostream>
 #include "Point.h"
 #include "Triangle.h"
+#include "Circle.h"
 #include <SFML/Graphics.hpp>
+#include "FileReader.h"
 
 using namespace std;
 
 int main()
 {
+	FileReader freader;
+	map<string, vector<vector<int>>> paramsMap = freader.getShapeParams();
+
+	for (auto elem : paramsMap) {
+		cout << elem.first<< ":\n";
+		for (auto el : elem.second) {
+			for (auto e: el)
+			{
+				cout << e << " ";
+			}
+			cout << endl;
+		}
+	}
+
+	/*
+	Point p3(0, 0);
+	Circle circle(p3, 100);
+
 	sf::RenderWindow window(sf::VideoMode(200, 200), "SFMLworks");
-	sf::CircleShape shape(100.f);
-	shape.setFillColor(sf::Color::Green);
+	sf::ConvexShape polygon;
+	polygon.setPointCount(0);
+	polygon.setPoint(0, sf::Vector2f(p3.getX(), p3.getY()));
+	polygon.setPoint(1, sf::Vector2f(0, 10));
+	polygon.setPoint(2, sf::Vector2f(25, 5));
+	polygon.setOutlineColor(sf::Color::Red);
+	polygon.setOutlineThickness(5);
+	polygon.setPosition(10, 20);
+	polygon.setFillColor(sf::Color::Cyan);
 
 	while (window.isOpen())
 	{
@@ -22,9 +49,9 @@ int main()
 		}
 
 		window.clear();
-		window.draw(shape);
+		window.draw(polygon);
 		window.display();
-	}
+	}*/
 
 	return 0;
 	/*

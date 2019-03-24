@@ -2,6 +2,8 @@
 #include "stdafx.h"
 #include "Shape.h"
 #include "Point.h"
+#include <cmath>
+#include <SFML\Graphics.hpp>
 
 class Circle : public Shape
 {
