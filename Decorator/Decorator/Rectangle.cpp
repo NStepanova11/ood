@@ -17,8 +17,10 @@ int Rectangle::getArea(){
 	return width*height;
 }
 
-/*
+
 void Rectangle::draw(RenderWindow &window) {
 	RectangleShape rectangle(sf::Vector2f(width, height));
 	rectangle.setFillColor(sf::Color::Blue);
-}*/
+	rectangle.setPosition(leftTop.getX(), leftTop.getY());
+	window.draw(rectangle);
+}

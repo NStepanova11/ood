@@ -15,9 +15,10 @@ int Circle::getPerimeter() {
 int Circle::getArea() {
 	return (int)(3.14*pow(radius, 2));
 }
-/*
-void Circle::draw(RenderWindow window) {
+
+void Circle::draw(RenderWindow &window) {
 	CircleShape circle(radius);
 	circle.setFillColor(sf::Color::Red);
+	circle.setPosition(center.getX(), center.getY());
 	window.draw(circle);
-}*/
+}

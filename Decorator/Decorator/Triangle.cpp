@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Triangle.h"
 
-
 Triangle::Triangle(vector<vector<int>> points)
 	:a(points[0][0], points[0][1])
 	,b(points[1][0], points[1][1])
@@ -23,13 +22,17 @@ int Triangle::getPerimeter() {
 int Triangle::getArea() {
 	return (int)abs(((b.getX() - a.getX())*(c.getY() - a.getY())) - ((c.getX() - a.getX())*(b.getY() - a.getY()))) / 2;
 }
-/*
+
+
 void Triangle::draw(RenderWindow &window) {
 	ConvexShape convex;
+	//double centerX = (a.getX() + b.getX() + c.getX()) / 3;
+	//double centerY = (a.getY() + b.getY() + c.getY()) / 3;
 	convex.setPointCount(3);
 	convex.setPoint(0, sf::Vector2f(a.getX(), a.getY()));
 	convex.setPoint(1, sf::Vector2f(b.getX(), b.getY()));
 	convex.setPoint(2, sf::Vector2f(c.getX(), c.getY()));
 	convex.setFillColor(sf::Color::Yellow);
+	convex.setPosition(a.getX(), a.getY());
 	window.draw(convex);
-}*/
+}
