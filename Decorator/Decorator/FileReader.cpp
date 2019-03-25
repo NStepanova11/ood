@@ -1,27 +1,19 @@
 #include "stdafx.h"
 #include "FileReader.h"
 
-map<string, vector<vector<int>>> FileReader::getShapeParams() {
+list<pair<string, vector<vector<int>>>> FileReader::getShapeParams() {
 	string fLine="";
 	vector<string> fileLines;
 	vector<vector<int>> shapePoints;
-	map<string, vector<vector<int>>> shapeParams;
+	list<pair<string, vector<vector<int>>>> shapeParams;
 
 	ifstream f("input.txt");
 	while (getline(f, fLine)){
 		string shapeName = getShapeType(fLine);
-		//cout << shapeName << endl;
+		cout << shapeName << endl;
 		shapePoints = getShapePoints(fLine);
-		/*
-		for (auto elem : shapePoints) {
-			for (auto e : elem)
-			{
-				cout << e << " ";
-			}
-			cout << endl;
-		}
-		*/
-		shapeParams.insert(pair<string, vector<vector<int>>>(shapeName,shapePoints));
+		
+		shapeParams.push_back(pair<string, vector<vector<int>>>(shapeName,shapePoints));
 	}
 	return shapeParams;
 }

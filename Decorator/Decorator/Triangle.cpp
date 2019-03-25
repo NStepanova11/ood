@@ -29,10 +29,12 @@ void Triangle::draw(RenderWindow &window) {
 	//double centerX = (a.getX() + b.getX() + c.getX()) / 3;
 	//double centerY = (a.getY() + b.getY() + c.getY()) / 3;
 	convex.setPointCount(3);
-	convex.setPoint(0, sf::Vector2f(a.getX(), a.getY()));
-	convex.setPoint(1, sf::Vector2f(b.getX(), b.getY()));
-	convex.setPoint(2, sf::Vector2f(c.getX(), c.getY()));
-	convex.setFillColor(sf::Color::Yellow);
+	convex.setPoint(0, Vector2f(a.getX(), a.getY()));
+	convex.setPoint(1, Vector2f(b.getX(), b.getY()));
+	convex.setPoint(2, Vector2f(c.getX(), c.getY()));
+	convex.setFillColor(Color::Yellow);
 	convex.setPosition(a.getX(), a.getY());
+	convex.setOutlineThickness(3);
+	convex.setOutlineColor(Color::White);
 	window.draw(convex);
 }

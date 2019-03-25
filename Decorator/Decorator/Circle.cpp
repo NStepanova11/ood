@@ -20,5 +20,7 @@ void Circle::draw(RenderWindow &window) {
 	CircleShape circle(radius);
 	circle.setFillColor(sf::Color::Red);
 	circle.setPosition(center.getX(), center.getY());
+	circle.setOutlineThickness(3);
+	circle.setOutlineColor(Color::White);
 	window.draw(circle);
 }

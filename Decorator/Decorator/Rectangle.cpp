@@ -22,5 +22,7 @@ void Rectangle::draw(RenderWindow &window) {
 	RectangleShape rectangle(sf::Vector2f(width, height));
 	rectangle.setFillColor(sf::Color::Blue);
 	rectangle.setPosition(leftTop.getX(), leftTop.getY());
+	rectangle.setOutlineThickness(3);
+	rectangle.setOutlineColor(Color::White);
 	window.draw(rectangle);
 }

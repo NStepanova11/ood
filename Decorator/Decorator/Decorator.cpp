@@ -14,7 +14,7 @@ using namespace std;
 int main()
 {
 	FileReader freader;
-	map<string, vector<vector<int>>> paramsMap = freader.getShapeParams();
+	list<pair<string, vector<vector<int>>>> paramsMap = freader.getShapeParams();
 
 	RenderWindow window(VideoMode(800, 600), "SFMLworks");
 
