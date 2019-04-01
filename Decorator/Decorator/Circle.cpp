@@ -9,7 +9,7 @@ Circle::Circle(vector<vector<int>> points)
 }
 
 int Circle::getPerimeter() {
-	return (int)(6.28*radius);
+	return abs((int)(6.28*radius));
 }
 
 int Circle::getArea() {

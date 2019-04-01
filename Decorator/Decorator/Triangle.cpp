@@ -23,7 +23,6 @@ int Triangle::getArea() {
 	return (int)abs(((b.getX() - a.getX())*(c.getY() - a.getY())) - ((c.getX() - a.getX())*(b.getY() - a.getY()))) / 2;
 }
 
-
 void Triangle::draw(RenderWindow &window) {
 	ConvexShape convex;
 	//double centerX = (a.getX() + b.getX() + c.getX()) / 3;
@@ -35,6 +34,7 @@ void Triangle::draw(RenderWindow &window) {
 	convex.setFillColor(Color::Yellow);
 	convex.setPosition(a.getX(), a.getY());
 	convex.setOutlineThickness(3);
+	
 	convex.setOutlineColor(Color::White);
 	window.draw(convex);
 }

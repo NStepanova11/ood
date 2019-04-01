@@ -11,12 +11,16 @@
 
 using namespace std;
 
+void drawShape(IShape* shape, RenderWindow &window);
+void saveShapeParams(list<pair<string, vector<vector<int>>>> &paramsMap);
+
 int main()
 {
 	FileReader freader;
 	list<pair<string, vector<vector<int>>>> paramsMap = freader.getShapeParams();
+	saveShapeParams(paramsMap);
 
-	RenderWindow window(VideoMode(800, 600), "SFMLworks");
+	RenderWindow window(VideoMode(800, 600), "Shapes");
 
 	while (window.isOpen())
 	{
@@ -30,23 +34,15 @@ int main()
 		window.clear();
 		
 		for (auto element : paramsMap) {
-			cout << element.first << endl;
 			if (element.first == "TRIANGLE")
 			{
-				ShapeDecorator shapeDecorator(new Triangle(element.second));
-				shapeDecorator.getOperation();
-				shapeDecorator.draw(window);
+				drawShape(new Triangle(element.second), window);
 			}
-			
 			else if (element.first == "RECTANGLE") {
-				ShapeDecorator shapeDecorator(new Rectangle(element.second));
-				shapeDecorator.getOperation();
-				shapeDecorator.draw(window);
+				drawShape(new Rectangle(element.second), window);
 			}
 			else if (element.first == "CIRCLE") {
-				ShapeDecorator shapeDecorator(new Circle(element.second));
-				shapeDecorator.getOperation();
-				shapeDecorator.draw(window);
+				drawShape(new Circle(element.second), window);
 			}
 		}
 		window.display();
@@ -55,14 +51,27 @@ int main()
 }
 
 
-/*
-for (auto elem : paramsMap) {
-cout << elem.first<< ":\n";
-for (auto el : elem.second) {
-for (auto e: el)
-{
-cout << e << " ";
+void drawShape(IShape* shape, RenderWindow &window) {
+	ShapeDecorator shapeDecorator(shape);
+	shapeDecorator.draw(window);
 }
-cout << endl;
+
+void saveShapeParams(list<pair<string, vector<vector<int>>>> &paramsMap) {
+	ofstream fout("output.txt");
+	for (auto element : paramsMap) {
+		if (element.first == "TRIANGLE")
+		{
+			ShapeDecorator shapeDecorator(new Triangle(element.second));
+			fout << element.first << " S=" << shapeDecorator.getArea() << " P=" << shapeDecorator.getPerimeter() << endl;
+		}
+		else if (element.first == "RECTANGLE") {
+			ShapeDecorator shapeDecorator(new Rectangle(element.second));
+			fout << element.first << " S=" << shapeDecorator.getArea() << " P=" << shapeDecorator.getPerimeter() << endl;
+		}
+		else if (element.first == "CIRCLE") {
+			ShapeDecorator shapeDecorator(new Circle(element.second));
+			fout << element.first << " S=" << shapeDecorator.getArea() << " P=" << shapeDecorator.getPerimeter() << endl;
+		}
+	}
+	fout.close();
 }
-}*/

@@ -10,13 +10,12 @@ Rectangle::Rectangle(vector<vector<int>> points)
 }
 
 int Rectangle::getPerimeter(){
-	return (width + height) * 2;
+	return abs((width + height) * 2);
 }
 
 int Rectangle::getArea(){
 	return width*height;
 }
-
 
 void Rectangle::draw(RenderWindow &window) {
 	RectangleShape rectangle(sf::Vector2f(width, height));
