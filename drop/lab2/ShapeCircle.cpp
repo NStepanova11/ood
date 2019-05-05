@@ -51,6 +51,19 @@ void ShapeCircle::changeFocus()
 	cout << selected << endl;
 }
 
+void ShapeCircle::selectShape()
+{
+	selected = true;
+	cout << "circle in focus" << endl;
+}
+
+void ShapeCircle::unselectShape()
+{
+	selected = false;
+	cout << "circle not focus" << endl;
+
+}
+
 bool ShapeCircle::isInsideBounds(Vector2i pos) {
 	int minX = top_left.getX();
 	int minY = top_left.getY();

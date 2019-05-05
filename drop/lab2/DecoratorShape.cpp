@@ -41,6 +41,16 @@ void DecoratorShape::changeFocus()
 	m_shape->changeFocus();
 }
 
+void DecoratorShape::selectShape()
+{
+	m_shape->selectShape();
+}
+
+void DecoratorShape::unselectShape()
+{
+	m_shape->unselectShape();
+}
+
 bool DecoratorShape::isInsideBounds(Vector2i pos)
 {
 	return m_shape->isInsideBounds(pos);

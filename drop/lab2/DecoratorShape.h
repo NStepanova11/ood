@@ -8,12 +8,14 @@ private:
 public:
 	DecoratorShape(IShape* shape);
 	virtual void draw(RenderWindow &window);
-	virtual int getX();
-	virtual int getY();
-	virtual int getHeight();
-	virtual int getWidth();
-	virtual bool isSelected();
-	virtual void changeFocus();
+	virtual int getX() override;
+	virtual int getY() override;
+	virtual int getHeight() override;
+	virtual int getWidth() override;
+	virtual bool isSelected() override;
+	virtual void changeFocus() override;
+	virtual void selectShape() override;
+	virtual void unselectShape() override;
 	virtual bool isInsideBounds(Vector2i pos) override;
 };
 

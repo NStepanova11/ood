@@ -18,5 +18,7 @@ public:
 	virtual int getWidth() = 0;
 	virtual bool isSelected() = 0;
 	virtual void changeFocus() = 0;
+	virtual void selectShape() = 0;
+	virtual void unselectShape() = 0;
 	virtual bool isInsideBounds(Vector2i pos) = 0;
 };

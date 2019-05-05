@@ -4,6 +4,35 @@
 void CompositeShape::add(IShape * shape)
 {
 	shapesContainer.push_back(shape);
+	shape->selectShape();
+}
+
+void CompositeShape::addAll(vector<IShape*> allShapes)
+{
+	shapesContainer = allShapes;
+	selectShape();
+}
+
+void CompositeShape::remove(IShape * shape)
+{
+	auto i = begin(shapesContainer);
+
+	while (i != end(shapesContainer)) {
+		// Do some stuff
+		if (shape)
+		{
+			shape->unselectShape();
+			i = shapesContainer.erase(i);
+		}
+		else
+			++i;
+	}
+}
+
+void CompositeShape::removeAll()
+{
+	unselectShape();
+	shapesContainer.clear();
 }
 
 void CompositeShape::draw(RenderWindow & window)
@@ -59,6 +88,21 @@ bool CompositeShape::isSelected()
 void CompositeShape::changeFocus()
 {
 	
+}
+
+void CompositeShape::selectShape()
+{
+	for (auto shape: shapesContainer)
+	{
+		shape->selectShape();
+	}
+}
+
+void CompositeShape::unselectShape()
+{
+	for (auto shape : shapesContainer) {
+		shape->unselectShape();
+	}
 }
 
 bool CompositeShape::isInsideBounds(Vector2i pos)

@@ -22,7 +22,13 @@ void ImageEditor::renderWin()
 			IShape* circle = new ShapeCircle(element.second);
 			IShape* circleDecorator = new DecoratorShape(circle);
 			dShapes.push_back(circleDecorator);
-			composite.add(circleDecorator);
+			//composite.add(circleDecorator);
+		}
+		if (element.first == "RECTANGLE") {
+			IShape* rectangle = new ShapeRectangle(element.second);
+			IShape* rectangleDecorator = new DecoratorShape(rectangle);
+			dShapes.push_back(rectangleDecorator);
+			//composite.add(rectangleDecorator);
 		}
 	}
 
@@ -35,17 +41,19 @@ void ImageEditor::renderWin()
 
 	while (window.isOpen())
 	{
-		checkEvent(window, dShapes);
+		checkEvent(window, dShapes, composite);
 		window.clear();
 		//circleDecorator->draw(window);
-		//dShapes[0]->draw(window);
-		composite.draw(window);
+		for (auto figure : dShapes) {
+			figure->draw(window);
+		}
+		//composite.draw(window);
 		window.display();
 	}
 
 }
 
-void ImageEditor::checkEvent(RenderWindow & window, vector<IShape*> &allShapesVector)
+void ImageEditor::checkEvent(RenderWindow & window, vector<IShape*> &allShapesVector, CompositeShape &composite)
 {
 	Event event;
 	Vector2i mousePos = { 0,0 };
@@ -58,8 +66,13 @@ void ImageEditor::checkEvent(RenderWindow & window, vector<IShape*> &allShapesVe
 		if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left) {
 			mousePos = Mouse::getPosition(window);
 			for (auto shape : allShapesVector) {
-				if (shape->isInsideBounds(mousePos)) {
-					shape->changeFocus();
+				if (shape->isInsideBounds(mousePos)){
+					if (!shape->isSelected()) {
+						composite.add(shape);
+					}
+					else if (shape->isSelected()) {
+						composite.remove(shape);
+					}
 				}
 			}
 		}

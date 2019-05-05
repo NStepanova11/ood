@@ -16,6 +16,8 @@ public:
 	int getWidth() override;
 	bool isSelected() override;
 	void changeFocus() override;
+	void selectShape() override;
+	void unselectShape() override;
 	bool isInsideBounds(Vector2i pos) override;
 };
 
