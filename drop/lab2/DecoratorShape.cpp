@@ -55,3 +55,13 @@ bool DecoratorShape::isInsideBounds(Vector2i pos)
 {
 	return m_shape->isInsideBounds(pos);
 }
+
+void DecoratorShape::setX(int x)
+{
+	m_shape->setX(x);
+}
+
+void DecoratorShape::setY(int y)
+{
+	m_shape->setY(y);
+}

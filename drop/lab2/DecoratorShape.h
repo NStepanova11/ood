@@ -17,5 +17,7 @@ public:
 	virtual void selectShape() override;
 	virtual void unselectShape() override;
 	virtual bool isInsideBounds(Vector2i pos) override;
+	virtual void setX(int x)  override;
+	virtual void setY(int y)  override;
 };
 

@@ -54,13 +54,13 @@ void ShapeCircle::changeFocus()
 void ShapeCircle::selectShape()
 {
 	selected = true;
-	cout << "circle in focus" << endl;
+	//cout << "circle in focus" << endl;
 }
 
 void ShapeCircle::unselectShape()
 {
 	selected = false;
-	cout << "circle not focus" << endl;
+	//cout << "circle not focus" << endl;
 
 }
 
@@ -73,4 +73,14 @@ bool ShapeCircle::isInsideBounds(Vector2i pos) {
 		return true;
 	}
 	return false;
+}
+
+void ShapeCircle::setX(int x)
+{
+	top_left.setX(x);
+}
+
+void ShapeCircle::setY(int y)
+{
+	top_left.setY(y);
 }

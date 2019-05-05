@@ -11,6 +11,7 @@ public:
 	void addAll(vector<IShape*> allShapes);
 	void remove(IShape *shape);
 	void removeAll();
+	void move(int x, int y);
 	void draw(RenderWindow &window) override;
 	int getX() override;
 	int getY() override;
@@ -21,5 +22,7 @@ public:
 	void selectShape() override;
 	void unselectShape() override;
 	virtual bool isInsideBounds(Vector2i pos) override;
+	void setX(int x) override;
+	void setY(int y) override;
 };
 

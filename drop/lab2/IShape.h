@@ -21,4 +21,6 @@ public:
 	virtual void selectShape() = 0;
 	virtual void unselectShape() = 0;
 	virtual bool isInsideBounds(Vector2i pos) = 0;
+	virtual void setX(int x) = 0;
+	virtual void setY(int y) = 0;
 };

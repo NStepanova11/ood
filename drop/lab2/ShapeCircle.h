@@ -19,5 +19,7 @@ public:
 	void selectShape() override;
 	void unselectShape() override;
 	bool isInsideBounds(Vector2i pos) override;
+	void setX(int x) override;
+	void setY(int y) override;
 };
 

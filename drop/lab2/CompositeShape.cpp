@@ -21,7 +21,7 @@ void CompositeShape::addAll(vector<IShape*> allShapes)
 
 void CompositeShape::remove(IShape *shape)
 {
-	cout << "container size begin: " << shapesContainer.size() << endl;
+	//cout << "container size begin: " << shapesContainer.size() << endl;
 	/*for (auto &child : shapesCont) {
 		if (child.get() == shape) {
 			child.get()->unselectShape();
@@ -37,13 +37,22 @@ void CompositeShape::remove(IShape *shape)
 			break;
 		}
 	}
-	cout << "container size: " << shapesContainer.size() << endl;
+	//cout << "container size: " << shapesContainer.size() << endl;
 }
 
 void CompositeShape::removeAll()
 {
 	unselectShape();
 	shapesContainer.clear();
+}
+
+void CompositeShape::move(int x, int y)
+{
+	for (auto child: shapesContainer)
+	{
+		child->setX(x);
+		child->setY(y);
+	}
 }
 
 void CompositeShape::draw(RenderWindow & window)
@@ -83,12 +92,30 @@ int CompositeShape::getY()
 
 int CompositeShape::getHeight()
 {
-	return 0;
+	int maxHeight = 0;
+	int y = getY();
+	for (auto child : shapesContainer) {
+		int childsRelativeY = child->getY() - y;
+		int childHeight = childsRelativeY + child->getHeight();
+		if (childHeight > maxHeight) {
+			maxHeight = childHeight;
+		}
+	}
+	return maxHeight;
 }
 
 int CompositeShape::getWidth()
 {
-	return 0;
+	int maxWidth = 0;
+	int x = getX();
+	for (auto child : shapesContainer) {
+		int childsRelativeX = child->getX() - x;
+		int childWidth = childsRelativeX + child->getWidth();
+		if (childWidth > maxWidth) {
+			maxWidth = childWidth;
+		}
+	}
+	return maxWidth;
 }
 
 bool CompositeShape::isSelected()
@@ -118,10 +145,27 @@ void CompositeShape::unselectShape()
 
 bool CompositeShape::isInsideBounds(Vector2i pos)
 {
-	for (auto child : shapesContainer) {
-		if (child->isInsideBounds(pos)) {
-			return true;
-		}
+	int minX = getX();
+	int minY = getY();
+	int maxX = minX + getWidth();
+	int maxY = minY + getHeight();
+	if ((pos.x >= minX && pos.x <= maxX) && (pos.y >= minY && pos.y <= maxY)) {
+		return true;
 	}
 	return false;
 }
+
+void CompositeShape::setX(int x)
+{
+	for (auto child : shapesContainer) {
+		child->setX(x);
+	}
+}
+
+void CompositeShape::setY(int y)
+{
+	for (auto child : shapesContainer) {
+		child->setY(y);
+	}
+}
+

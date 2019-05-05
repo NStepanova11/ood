@@ -164,6 +164,7 @@
     <ClCompile Include="DecoratorShape.cpp" />
     <ClCompile Include="FileReader.cpp" />
     <ClCompile Include="ImageEditor.cpp" />
+    <ClCompile Include="IShape.cpp" />
     <ClCompile Include="lab2.cpp" />
     <ClCompile Include="PPoint.cpp" />
     <ClCompile Include="ShapeCircle.cpp" />
