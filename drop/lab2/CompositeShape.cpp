@@ -13,7 +13,10 @@ void CompositeShape::add(IShape * shape)
 
 void CompositeShape::addAll(vector<IShape*> allShapes)
 {
-	
+	shapesContainer = allShapes;
+	for (auto child : shapesContainer) {
+		child->selectShape();
+	}
 }
 
 void CompositeShape::remove(IShape *shape)

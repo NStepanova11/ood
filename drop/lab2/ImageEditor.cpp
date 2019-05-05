@@ -63,7 +63,8 @@ void ImageEditor::checkEvent(RenderWindow & window, vector<IShape*> &allShapesVe
 		if (event.type == Event::Closed)
 			window.close();
 
-		if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left) {
+		//if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left) {
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)){
 			mousePos = Mouse::getPosition(window);
 			for (auto shape : allShapesVector) {
 				if (shape->isInsideBounds(mousePos)){
@@ -75,6 +76,14 @@ void ImageEditor::checkEvent(RenderWindow & window, vector<IShape*> &allShapesVe
 					}
 				}
 			}
+		}
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) && sf::Keyboard::isKeyPressed(sf::Keyboard::G)) {
+			composite.addAll(allShapesVector);
+		}
+		
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) && sf::Keyboard::isKeyPressed(sf::Keyboard::H)) {
+			composite.removeAll();
 		}
 	}
 
