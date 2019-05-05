@@ -1,25 +1,37 @@
 #include "stdafx.h"
 #include "ImageEditor.h"
+#include "FileReader.h"
 
 void ImageEditor::renderWin()
 {
-	RenderWindow window(VideoMode(400, 400), "SFMLworks");
-	vector<vector<int>> pp{ { 100,100 },{ 30 } };
-	IShape* circle = new ShapeCircle(pp);
-	IShape* circleDecorator = new DecoratorShape(circle);
+	RenderWindow window(VideoMode(1000, 800), "SFMLworks");
+	//vector<vector<int>> pp{ { 100,100 },{ 30 } };
+	//IShape* circle = new ShapeCircle(pp);
+	//IShape* circleDecorator = new DecoratorShape(circle);
 
-	vector<vector<int>> pp2{ { 200,100 },{ 50 } };
-	IShape* circle2 = new ShapeCircle(pp2);
-	IShape* circleDecorator2 = new DecoratorShape(circle2);
-
+	//vector<vector<int>> pp2{ { 200,100 },{ 50 } };
+	//IShape* circle2 = new ShapeCircle(pp2);
+	//IShape* circleDecorator2 = new DecoratorShape(circle2);
+	vector<IShape*> dShapes;
+	FileReader freader;
+	list<pair<string, vector<vector<int>>>> paramsMap = freader.getShapeParams();
+	
 	CompositeShape composite;
-	composite.add(circleDecorator);
-	composite.add(circleDecorator2);
+	for (auto element : paramsMap) {
+		if (element.first == "CIRCLE") {
+			IShape* circle = new ShapeCircle(element.second);
+			IShape* circleDecorator = new DecoratorShape(circle);
+			dShapes.push_back(circleDecorator);
+			composite.add(circleDecorator);
+		}
+	}
+
+	
+//	composite.add(circleDecorator2);
 	//DecoratorShape ds(&circle);
 
-	vector<IShape*> dShapes;
-	dShapes.push_back(circleDecorator);
-	dShapes.push_back(circleDecorator2);
+	//dShapes.push_back(circleDecorator);
+	//dShapes.push_back(circleDecorator2);
 
 	while (window.isOpen())
 	{

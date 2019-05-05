@@ -150,6 +150,7 @@
   <ItemGroup>
     <ClInclude Include="CompositeShape.h" />
     <ClInclude Include="DecoratorShape.h" />
+    <ClInclude Include="FileReader.h" />
     <ClInclude Include="ImageEditor.h" />
     <ClInclude Include="IShape.h" />
     <ClInclude Include="PPoint.h" />
@@ -160,6 +161,7 @@
   <ItemGroup>
     <ClCompile Include="CompositeShape.cpp" />
     <ClCompile Include="DecoratorShape.cpp" />
+    <ClCompile Include="FileReader.cpp" />
     <ClCompile Include="ImageEditor.cpp" />
     <ClCompile Include="lab2.cpp" />
     <ClCompile Include="PPoint.cpp" />
