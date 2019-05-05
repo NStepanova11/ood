@@ -4,6 +4,8 @@ class CompositeShape :	public IShape
 {
 private:
 	vector<IShape*> shapesContainer;
+	unique_ptr<IShape> shape_ptr;
+	vector<unique_ptr<IShape>> shapesCont;
 public:
 	void add(IShape *shape);
 	void addAll(vector<IShape*> allShapes);

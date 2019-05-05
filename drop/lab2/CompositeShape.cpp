@@ -1,32 +1,40 @@
 #include "stdafx.h"
 #include "CompositeShape.h"
+#include <iterator>
 
 void CompositeShape::add(IShape * shape)
 {
 	shapesContainer.push_back(shape);
 	shape->selectShape();
+	//unique_ptr<IShape> shape_ptr(shape);
+	//shape_ptr->selectShape();
+	//shapesCont.push_back(move(shape_ptr));
 }
 
 void CompositeShape::addAll(vector<IShape*> allShapes)
 {
-	shapesContainer = allShapes;
-	selectShape();
+	
 }
 
-void CompositeShape::remove(IShape * shape)
+void CompositeShape::remove(IShape *shape)
 {
-	auto i = begin(shapesContainer);
-
-	while (i != end(shapesContainer)) {
-		// Do some stuff
-		if (shape)
-		{
-			shape->unselectShape();
-			i = shapesContainer.erase(i);
+	cout << "container size begin: " << shapesContainer.size() << endl;
+	/*for (auto &child : shapesCont) {
+		if (child.get() == shape) {
+			child.get()->unselectShape();
 		}
-		else
-			++i;
+	}*/
+	for (std::vector<IShape*>::iterator it = shapesContainer.begin(); it != shapesContainer.end(); it++)
+	{
+		if (*it == shape)
+		{
+			//delete *it;
+			shape->unselectShape();
+			shapesContainer.erase(it);
+			break;
+		}
 	}
+	cout << "container size: " << shapesContainer.size() << endl;
 }
 
 void CompositeShape::removeAll()
