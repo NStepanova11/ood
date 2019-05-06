@@ -24,5 +24,6 @@ public:
 	virtual bool isInsideBounds(Vector2i pos) override;
 	void setX(int x) override;
 	void setY(int y) override;
+	void setPosition(Vector2i pos);
 };
 

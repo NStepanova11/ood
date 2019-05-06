@@ -21,7 +21,7 @@ void CompositeShape::addAll(vector<IShape*> allShapes)
 
 void CompositeShape::remove(IShape *shape)
 {
-	//cout << "container size begin: " << shapesContainer.size() << endl;
+	cout << "container size begin: " << shapesContainer.size() << endl;
 	/*for (auto &child : shapesCont) {
 		if (child.get() == shape) {
 			child.get()->unselectShape();
@@ -37,7 +37,7 @@ void CompositeShape::remove(IShape *shape)
 			break;
 		}
 	}
-	//cout << "container size: " << shapesContainer.size() << endl;
+	cout << "container size: " << shapesContainer.size() << endl;
 }
 
 void CompositeShape::removeAll()
@@ -77,7 +77,7 @@ int CompositeShape::getX()
 }
 
 int CompositeShape::getY()
-{
+{	
 	if (shapesContainer.size() == 0) {
 		return 0;
 	}
@@ -89,6 +89,8 @@ int CompositeShape::getY()
 	}
 	return y;
 }
+
+
 
 int CompositeShape::getHeight()
 {
@@ -166,6 +168,14 @@ void CompositeShape::setY(int y)
 {
 	for (auto child : shapesContainer) {
 		child->setY(y);
+	}
+}
+
+void CompositeShape::setPosition(Vector2i pos)
+{
+	for (auto child : shapesContainer)
+	{
+		child->setPosition(pos);
 	}
 }
 

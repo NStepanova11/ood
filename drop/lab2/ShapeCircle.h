@@ -7,6 +7,7 @@ private:
 	PPoint top_left;
 	int radius;
 	bool selected;
+	CircleShape shape;
 public:
 	ShapeCircle(vector<vector<int>> points);
 	void draw(RenderWindow &window) override;
@@ -21,5 +22,6 @@ public:
 	bool isInsideBounds(Vector2i pos) override;
 	void setX(int x) override;
 	void setY(int y) override;
+	void setPosition(Vector2i pos) override;
 };
 

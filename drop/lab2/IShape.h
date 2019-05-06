@@ -23,4 +23,5 @@ public:
 	virtual bool isInsideBounds(Vector2i pos) = 0;
 	virtual void setX(int x) = 0;
 	virtual void setY(int y) = 0;
+	virtual void setPosition(Vector2i pos) = 0;
 };

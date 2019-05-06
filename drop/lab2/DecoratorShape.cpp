@@ -65,3 +65,8 @@ void DecoratorShape::setY(int y)
 {
 	m_shape->setY(y);
 }
+
+void DecoratorShape::setPosition(Vector2i pos)
+{
+	m_shape->setPosition(pos);
+}

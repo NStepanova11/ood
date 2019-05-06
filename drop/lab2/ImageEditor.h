@@ -4,6 +4,7 @@
 #include "DecoratorShape.h"
 #include "ShapeCircle.h"
 #include "ShapeRectangle.h"
+#include "ShapeTriangle.h"
 #include "CompositeShape.h"
 
 class ImageEditor

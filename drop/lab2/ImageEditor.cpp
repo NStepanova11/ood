@@ -30,6 +30,12 @@ void ImageEditor::renderWin()
 			dShapes.push_back(rectangleDecorator);
 			//composite.add(rectangleDecorator);
 		}
+		if (element.first == "TRIANGLE") {
+			IShape* triangle = new ShapeTriangle(element.second);
+			IShape* triangleDecorator = new DecoratorShape(triangle);
+			dShapes.push_back(triangleDecorator);
+			//composite.add(rectangleDecorator);
+		}
 	}
 
 	
