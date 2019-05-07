@@ -19,10 +19,6 @@ public:
 	void selectShape() override;
 	void unselectShape() override;
 	bool isInsideBounds(Vector2i pos) override;
-	//void setX(int x) override;
-	//void setY(int y) override;
-	//int getX() override;
-	//int getY() override;
 	void setPosition(int x, int y) override;
 	Vector2i getPosition() override;
 	void setDiff(int x, int y) override;

@@ -14,31 +14,9 @@ void ShapeCircle::draw(RenderWindow & window)
 	shape.setRadius(radius);
 	shape.setFillColor(::Color::Red);
 	shape.setPosition(top_left.getX(), top_left.getY());
-	if (selected)
-	{
-		shape.setOutlineThickness(3);
-	}
-	else
-	{
-		shape.setOutlineThickness(0);
-	}
 	shape.setOutlineColor(Color::White);
 	window.draw(shape);
 }
-
-/*
-int ShapeCircle::getX()
-{
-	//return top_left.getX();
-	return shape.getPosition().x;
-}
-
-int ShapeCircle::getY()
-{
-	//return top_left.getY();
-	return shape.getPosition().y;
-}
-*/
 
 int ShapeCircle::getHeight()
 {
@@ -58,24 +36,14 @@ bool ShapeCircle::isSelected()
 void ShapeCircle::selectShape()
 {
 	selected = true;
-	//cout << "circle in focus" << endl;
 }
 
 void ShapeCircle::unselectShape()
 {
 	selected = false;
-	//cout << "circle not focus" << endl;
 }
 
 bool ShapeCircle::isInsideBounds(Vector2i pos) {
-	/*int minX = top_left.getX();
-	int minY = top_left.getY();
-	int maxX = minX + getWidth();
-	int maxY = minY + getHeight();
-	if ((pos.x >= minX && pos.x <= maxX) && (pos.y >= minY && pos.y <= maxY)) {
-		return true;
-	}
-	return false;*/
 	if (shape.getGlobalBounds().contains(pos.x, pos.y)) {
 		return true;
 	}
@@ -84,7 +52,6 @@ bool ShapeCircle::isInsideBounds(Vector2i pos) {
 
 void ShapeCircle::setPosition(int x, int y)
 {
-	//shape.setPosition(x, y);
 	top_left.setX(x);
 	top_left.setY(y);
 }
@@ -109,20 +76,3 @@ int ShapeCircle::getDy()
 {
 	return dy;
 }
-
-/*
-void ShapeCircle::setX(int x)
-{
-	top_left.setX(x);
-}
-
-void ShapeCircle::setY(int y)
-{
-	top_left.setY(y);
-}
-
-void ShapeCircle::setPosition(Vector2i pos)
-{
-	shape.setPosition(pos.x, pos.y);
-}
-*/

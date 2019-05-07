@@ -4,14 +4,7 @@
 
 void ImageEditor::renderWin()
 {
-	RenderWindow window(VideoMode(1000, 800), "SFMLworks");
-	//vector<vector<int>> pp{ { 100,100 },{ 30 } };
-	//IShape* circle = new ShapeCircle(pp);
-	//IShape* circleDecorator = new DecoratorShape(circle);
-
-	//vector<vector<int>> pp2{ { 200,100 },{ 50 } };
-	//IShape* circle2 = new ShapeCircle(pp2);
-	//IShape* circleDecorator2 = new DecoratorShape(circle2);
+	RenderWindow window(VideoMode(1000, 800), "Composite");
 	vector<IShape*> dShapes;
 	FileReader freader;
 	list<pair<string, vector<vector<int>>>> paramsMap = freader.getShapeParams();
@@ -35,9 +28,9 @@ void ImageEditor::renderWin()
 		}
 	}
 
-	bool isMove = false;//переменная для щелчка мыши по спрайту
-	float dX = 0;//корректировка движения по х
-	float dY = 0;//по у
+	bool isMove = false;
+	float dX = 0;
+	float dY = 0;
 	Vector2i mousePos = { 0,0 };
 
 	while (window.isOpen())
@@ -79,23 +72,17 @@ void ImageEditor::checkEvent(RenderWindow &window, vector<IShape*> &allShapesVec
 			
 		}
 
-
 		if (event.type == Event::MouseButtonPressed && event.key.code == Mouse::Left) {
-			if (composite.isInsideBounds(mousePos))//и при этом координата курсора попадает в спрайт
+			if (composite.isInsideBounds(mousePos))
 			{
-				std::cout << "isClicked!\n";//выводим в консоль сообщение об этом
 				composite.setDiff(mousePos.x, mousePos.y);
-				
-				//dX = mousePos.x - composite.getPosition().x;//делаем разность между позицией курсора и спрайта.для корректировки нажатия
-				//dY = mousePos.y - composite.getPosition().y;//тоже самое по игреку
-				isMove = true;//можем двигать спрайт	
-				cout << "compositePos: " << composite.getPosition().x << " " << composite.getPosition().y << endl;
+				isMove = true;	
 			}
 		}
 
-		if (event.type == Event::MouseButtonReleased) {//если отпустили клавишу
-			if (event.key.code == Mouse::Left) //а именно левую
-				isMove = false; //то не можем двигать спрайт	
+		if (event.type == Event::MouseButtonReleased) {
+			if (event.key.code == Mouse::Left)
+				isMove = false;	
 		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) && sf::Keyboard::isKeyPressed(sf::Keyboard::G)) {
@@ -106,8 +93,7 @@ void ImageEditor::checkEvent(RenderWindow &window, vector<IShape*> &allShapesVec
 			composite.removeAll();
 		}
 	}
-	if (isMove) {//если можем двигать
-		//composite.setPosition(mousePos.x - dX, mousePos.y - dY);//двигаем спрайт по Х
+	if (isMove) {
 		composite.setPosition(mousePos.x, mousePos.y);
 	}
 }

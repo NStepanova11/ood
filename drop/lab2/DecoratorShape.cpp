@@ -11,17 +11,6 @@ void DecoratorShape::draw(RenderWindow & window)
 	m_shape->draw(window);
 }
 
-/*int DecoratorShape::getX()
-{
-	return m_shape->getX();
-}
-
-int DecoratorShape::getY()
-{
-	return m_shape->getY();
-}
-*/
-
 int DecoratorShape::getHeight()
 {
 	return m_shape->getHeight();
@@ -76,20 +65,3 @@ int DecoratorShape::getDy()
 {
 	return m_shape->getDy();
 }
-
-/*
-void DecoratorShape::setX(int x)
-{
-	m_shape->setX(x);
-}
-
-void DecoratorShape::setY(int y)
-{
-	m_shape->setY(y);
-}
-
-void DecoratorShape::setPosition(Vector2i pos)
-{
-	m_shape->setPosition(pos);
-}
-*/
