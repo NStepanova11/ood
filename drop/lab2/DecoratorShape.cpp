@@ -62,6 +62,21 @@ Vector2i DecoratorShape::getPosition()
 	return m_shape->getPosition();
 }
 
+void DecoratorShape::setDiff(int x, int y)
+{
+	m_shape->setDiff(x, y);
+}
+
+int DecoratorShape::getDx()
+{
+	return m_shape->getDx();
+}
+
+int DecoratorShape::getDy()
+{
+	return m_shape->getDy();
+}
+
 /*
 void DecoratorShape::setX(int x)
 {

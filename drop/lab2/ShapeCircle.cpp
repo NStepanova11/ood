@@ -94,6 +94,22 @@ Vector2i ShapeCircle::getPosition()
 	return Vector2i(shape.getPosition().x, shape.getPosition().y);
 }
 
+void ShapeCircle::setDiff(int x, int y)
+{
+	dx = x;
+	dy = y;
+}
+
+int ShapeCircle::getDx()
+{
+	return dx;
+}
+
+int ShapeCircle::getDy()
+{
+	return dy;
+}
+
 /*
 void ShapeCircle::setX(int x)
 {

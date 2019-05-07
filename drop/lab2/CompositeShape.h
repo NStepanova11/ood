@@ -13,7 +13,6 @@ public:
 	void removeAll();
 	void move(int x, int y);
 	void draw(RenderWindow &window) override;
-	
 	int getHeight() override; //return 0
 	int getWidth() override; //return 0
 	bool isSelected() override; //return 0
@@ -27,5 +26,9 @@ public:
 	void setPosition(int x, int y) override;
 	Vector2i getPosition() override;
 	void drawFrame(RenderWindow &window);
+	void calculateCoordDiff(Vector2i mousePos);
+	void setDiff(int x, int y) override;
+	int getDx() override;
+	int getDy() override;
 };
 

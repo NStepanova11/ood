@@ -99,6 +99,7 @@ int CompositeShape::getHeight()
 			maxHeight = childHeight;
 		}
 	}
+	//cout << "maxHeight: " << maxHeight << endl;
 	return maxHeight;
 }
 
@@ -148,13 +149,14 @@ bool CompositeShape::isInsideBounds(Vector2i pos)
 	return false;
 }
 
-void CompositeShape::setPosition(int x, int y)
+void CompositeShape::setPosition(int mouseX, int mouseY)
 {
 	for (auto child : shapesContainer) {
-		int xx = child->getPosition().x + x;
-		int yy = child->getPosition().y + y;
-		child->setPosition(x, y);
-		cout << child->getPosition().x <<"  "<< child->getPosition().y << endl;
+		/*mousePos.x - dX, mousePos.y - dY*/
+		int xx = mouseX - child->getDx();
+		int yy = mouseY - child->getDy();
+		child->setPosition(xx, yy);
+		//cout << xx <<"  "<< yy << endl;
 	}
 }
 
@@ -184,8 +186,34 @@ void CompositeShape::drawFrame(RenderWindow & window)
 	frame.setSize(Vector2f(getWidth(), getHeight()));
 	frame.setPosition(getPosition().x, getPosition().y);
 	frame.setOutlineThickness(3);
+	frame.setFillColor(Color::Transparent);
 	frame.setOutlineColor(Color::White);
 	window.draw(frame);
+}
+
+void CompositeShape::calculateCoordDiff(Vector2i mousePos)
+{
+	
+}
+
+void CompositeShape::setDiff(int mouseX, int mouseY)
+{
+	for (auto child :shapesContainer)
+	{
+		int dX = mouseX - child->getPosition().x;//делаем разность между позицией курсора и спрайта.для корректировки нажатия
+		int dY = mouseY - child->getPosition().y;
+		child->setDiff(dX, dY);
+	}
+}
+
+int CompositeShape::getDx()
+{
+	return 0;
+}
+
+int CompositeShape::getDy()
+{
+	return 0;
 }
 
 /*

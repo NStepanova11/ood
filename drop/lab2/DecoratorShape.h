@@ -21,5 +21,8 @@ public:
 	//virtual int getY() override;
 	virtual void setPosition(int x, int y) override;
 	virtual Vector2i getPosition() override;
+	virtual void setDiff(int x, int y) override;
+	virtual int getDx() override;
+	virtual int getDy() override;
 };
 

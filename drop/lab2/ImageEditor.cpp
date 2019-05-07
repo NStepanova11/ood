@@ -50,7 +50,7 @@ void ImageEditor::renderWin()
 		for (auto figure : dShapes) {
 			figure->draw(window);
 		}
-		//composite.drawFrame(window);
+		composite.drawFrame(window);
 		window.display();
 	}
 }
@@ -84,9 +84,12 @@ void ImageEditor::checkEvent(RenderWindow &window, vector<IShape*> &allShapesVec
 			if (composite.isInsideBounds(mousePos))//и при этом координата курсора попадает в спрайт
 			{
 				std::cout << "isClicked!\n";//выводим в консоль сообщение об этом
-				dX = mousePos.x - composite.getPosition().x;//делаем разность между позицией курсора и спрайта.для корректировки нажатия
-				dY = mousePos.y - composite.getPosition().y;//тоже самое по игреку
-				isMove = true;//можем двигать спрайт							
+				composite.setDiff(mousePos.x, mousePos.y);
+				
+				//dX = mousePos.x - composite.getPosition().x;//делаем разность между позицией курсора и спрайта.для корректировки нажатия
+				//dY = mousePos.y - composite.getPosition().y;//тоже самое по игреку
+				isMove = true;//можем двигать спрайт	
+				cout << "compositePos: " << composite.getPosition().x << " " << composite.getPosition().y << endl;
 			}
 		}
 
@@ -104,6 +107,7 @@ void ImageEditor::checkEvent(RenderWindow &window, vector<IShape*> &allShapesVec
 		}
 	}
 	if (isMove) {//если можем двигать
-		composite.setPosition(mousePos.x - dX, mousePos.y - dY);//двигаем спрайт по Х
+		//composite.setPosition(mousePos.x - dX, mousePos.y - dY);//двигаем спрайт по Х
+		composite.setPosition(mousePos.x, mousePos.y);
 	}
 }
