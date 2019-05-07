@@ -11,17 +11,17 @@ private:
 public:
 	ShapeCircle(vector<vector<int>> points);
 	void draw(RenderWindow &window) override;
-	int getX() override;
-	int getY() override;
 	int getHeight() override;
 	int getWidth() override;
 	bool isSelected() override;
-	void changeFocus() override;
 	void selectShape() override;
 	void unselectShape() override;
 	bool isInsideBounds(Vector2i pos) override;
-	void setX(int x) override;
-	void setY(int y) override;
-	void setPosition(Vector2i pos) override;
+	//void setX(int x) override;
+	//void setY(int y) override;
+	//int getX() override;
+	//int getY() override;
+	void setPosition(int x, int y) override;
+	Vector2i getPosition() override;
 };
 

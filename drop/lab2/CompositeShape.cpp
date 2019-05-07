@@ -1,14 +1,14 @@
 #include "stdafx.h"
 #include "CompositeShape.h"
 #include <iterator>
+#include <iostream>
+
+using namespace std;
 
 void CompositeShape::add(IShape * shape)
 {
 	shapesContainer.push_back(shape);
 	shape->selectShape();
-	//unique_ptr<IShape> shape_ptr(shape);
-	//shape_ptr->selectShape();
-	//shapesCont.push_back(move(shape_ptr));
 }
 
 void CompositeShape::addAll(vector<IShape*> allShapes)
@@ -21,12 +21,7 @@ void CompositeShape::addAll(vector<IShape*> allShapes)
 
 void CompositeShape::remove(IShape *shape)
 {
-	cout << "container size begin: " << shapesContainer.size() << endl;
-	/*for (auto &child : shapesCont) {
-		if (child.get() == shape) {
-			child.get()->unselectShape();
-		}
-	}*/
+	//cout << "container size begin: " << shapesContainer.size() << endl;
 	for (std::vector<IShape*>::iterator it = shapesContainer.begin(); it != shapesContainer.end(); it++)
 	{
 		if (*it == shape)
@@ -37,7 +32,7 @@ void CompositeShape::remove(IShape *shape)
 			break;
 		}
 	}
-	cout << "container size: " << shapesContainer.size() << endl;
+	//cout << "container size: " << shapesContainer.size() << endl;
 }
 
 void CompositeShape::removeAll()
@@ -50,8 +45,8 @@ void CompositeShape::move(int x, int y)
 {
 	for (auto child: shapesContainer)
 	{
-		child->setX(x);
-		child->setY(y);
+		//child->setX(x);
+		//child->setY(y);
 	}
 }
 
@@ -62,6 +57,7 @@ void CompositeShape::draw(RenderWindow & window)
 	}
 }
 
+/*
 int CompositeShape::getX()
 {
 	if (shapesContainer.size() == 0) {
@@ -90,14 +86,14 @@ int CompositeShape::getY()
 	return y;
 }
 
-
+*/
 
 int CompositeShape::getHeight()
 {
 	int maxHeight = 0;
-	int y = getY();
+	int y = getPosition().y;
 	for (auto child : shapesContainer) {
-		int childsRelativeY = child->getY() - y;
+		int childsRelativeY = child->getPosition().y - y;
 		int childHeight = childsRelativeY + child->getHeight();
 		if (childHeight > maxHeight) {
 			maxHeight = childHeight;
@@ -109,9 +105,9 @@ int CompositeShape::getHeight()
 int CompositeShape::getWidth()
 {
 	int maxWidth = 0;
-	int x = getX();
+	int x = getPosition().x;
 	for (auto child : shapesContainer) {
-		int childsRelativeX = child->getX() - x;
+		int childsRelativeX = child->getPosition().x - x;
 		int childWidth = childsRelativeX + child->getWidth();
 		if (childWidth > maxWidth) {
 			maxWidth = childWidth;
@@ -123,11 +119,6 @@ int CompositeShape::getWidth()
 bool CompositeShape::isSelected()
 {
 	return false;
-}
-
-void CompositeShape::changeFocus()
-{
-	
 }
 
 void CompositeShape::selectShape()
@@ -147,8 +138,8 @@ void CompositeShape::unselectShape()
 
 bool CompositeShape::isInsideBounds(Vector2i pos)
 {
-	int minX = getX();
-	int minY = getY();
+	int minX = getPosition().x;
+	int minY = getPosition().y;
 	int maxX = minX + getWidth();
 	int maxY = minY + getHeight();
 	if ((pos.x >= minX && pos.x <= maxX) && (pos.y >= minY && pos.y <= maxY)) {
@@ -157,6 +148,47 @@ bool CompositeShape::isInsideBounds(Vector2i pos)
 	return false;
 }
 
+void CompositeShape::setPosition(int x, int y)
+{
+	for (auto child : shapesContainer) {
+		int xx = child->getPosition().x + x;
+		int yy = child->getPosition().y + y;
+		child->setPosition(x, y);
+		cout << child->getPosition().x <<"  "<< child->getPosition().y << endl;
+	}
+}
+
+Vector2i CompositeShape::getPosition()
+{
+	if (shapesContainer.size() == 0) {
+		return Vector2i(0,0);
+	}
+
+	int x = shapesContainer[0]->getPosition().x;
+	int y = shapesContainer[0]->getPosition().y;
+	
+	for (auto child : shapesContainer) {
+		if (child->getPosition().x < x) {
+			x = child->getPosition().x;
+		}
+		if (child->getPosition().y < y) {
+			y = child->getPosition().y;
+		}
+	}
+	return Vector2i(x, y);
+}
+
+void CompositeShape::drawFrame(RenderWindow & window)
+{
+	RectangleShape frame;
+	frame.setSize(Vector2f(getWidth(), getHeight()));
+	frame.setPosition(getPosition().x, getPosition().y);
+	frame.setOutlineThickness(3);
+	frame.setOutlineColor(Color::White);
+	window.draw(frame);
+}
+
+/*
 void CompositeShape::setX(int x)
 {
 	for (auto child : shapesContainer) {
@@ -179,3 +211,4 @@ void CompositeShape::setPosition(Vector2i pos)
 	}
 }
 
+*/

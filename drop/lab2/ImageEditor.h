@@ -11,6 +11,7 @@ class ImageEditor
 {
 public:
 	void renderWin();
-	void checkEvent(RenderWindow &window, vector<IShape*> &allShapesVector, CompositeShape &composite);
+	void checkEvent(RenderWindow &window, vector<IShape*> &allShapesVector, CompositeShape &composite,
+		float &dX, float &dY, bool &isMove, Vector2i &mousePos);
 };
 

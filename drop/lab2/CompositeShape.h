@@ -13,17 +13,19 @@ public:
 	void removeAll();
 	void move(int x, int y);
 	void draw(RenderWindow &window) override;
-	int getX() override;
-	int getY() override;
+	
 	int getHeight() override; //return 0
 	int getWidth() override; //return 0
 	bool isSelected() override; //return 0
-	void changeFocus() override; //return 0
 	void selectShape() override;
 	void unselectShape() override;
 	virtual bool isInsideBounds(Vector2i pos) override;
-	void setX(int x) override;
-	void setY(int y) override;
-	void setPosition(Vector2i pos);
+	//void setX(int x) override;
+	//void setY(int y) override;
+	//int getX() override;
+	//int getY() override;
+	void setPosition(int x, int y) override;
+	Vector2i getPosition() override;
+	void drawFrame(RenderWindow &window);
 };
 

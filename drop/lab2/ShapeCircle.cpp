@@ -12,23 +12,21 @@ ShapeCircle::ShapeCircle(vector<vector<int>> points)
 void ShapeCircle::draw(RenderWindow & window)
 {
 	shape.setRadius(radius);
-	//circle(radius);
 	shape.setFillColor(::Color::Red);
 	shape.setPosition(top_left.getX(), top_left.getY());
 	if (selected)
 	{
 		shape.setOutlineThickness(3);
-		//cout << "circle in focus" << endl;
 	}
 	else
 	{
-		//cout << "circle not focus" << endl;
 		shape.setOutlineThickness(0);
 	}
 	shape.setOutlineColor(Color::White);
 	window.draw(shape);
 }
 
+/*
 int ShapeCircle::getX()
 {
 	//return top_left.getX();
@@ -40,6 +38,7 @@ int ShapeCircle::getY()
 	//return top_left.getY();
 	return shape.getPosition().y;
 }
+*/
 
 int ShapeCircle::getHeight()
 {
@@ -54,12 +53,6 @@ int ShapeCircle::getWidth()
 bool ShapeCircle::isSelected()
 {
 	return selected;
-}
-
-void ShapeCircle::changeFocus()
-{
-	selected = !selected;
-	cout << selected << endl;
 }
 
 void ShapeCircle::selectShape()
@@ -89,6 +82,19 @@ bool ShapeCircle::isInsideBounds(Vector2i pos) {
 	return false;
 }
 
+void ShapeCircle::setPosition(int x, int y)
+{
+	//shape.setPosition(x, y);
+	top_left.setX(x);
+	top_left.setY(y);
+}
+
+Vector2i ShapeCircle::getPosition()
+{
+	return Vector2i(shape.getPosition().x, shape.getPosition().y);
+}
+
+/*
 void ShapeCircle::setX(int x)
 {
 	top_left.setX(x);
@@ -103,3 +109,4 @@ void ShapeCircle::setPosition(Vector2i pos)
 {
 	shape.setPosition(pos.x, pos.y);
 }
+*/

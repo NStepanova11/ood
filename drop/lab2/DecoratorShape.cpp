@@ -11,7 +11,7 @@ void DecoratorShape::draw(RenderWindow & window)
 	m_shape->draw(window);
 }
 
-int DecoratorShape::getX()
+/*int DecoratorShape::getX()
 {
 	return m_shape->getX();
 }
@@ -20,6 +20,7 @@ int DecoratorShape::getY()
 {
 	return m_shape->getY();
 }
+*/
 
 int DecoratorShape::getHeight()
 {
@@ -34,11 +35,6 @@ int DecoratorShape::getWidth()
 bool DecoratorShape::isSelected()
 {
 	return m_shape->isSelected();
-}
-
-void DecoratorShape::changeFocus()
-{
-	m_shape->changeFocus();
 }
 
 void DecoratorShape::selectShape()
@@ -56,6 +52,17 @@ bool DecoratorShape::isInsideBounds(Vector2i pos)
 	return m_shape->isInsideBounds(pos);
 }
 
+void DecoratorShape::setPosition(int x, int y)
+{
+	m_shape->setPosition(x, y);
+}
+
+Vector2i DecoratorShape::getPosition()
+{
+	return m_shape->getPosition();
+}
+
+/*
 void DecoratorShape::setX(int x)
 {
 	m_shape->setX(x);
@@ -70,3 +77,4 @@ void DecoratorShape::setPosition(Vector2i pos)
 {
 	m_shape->setPosition(pos);
 }
+*/

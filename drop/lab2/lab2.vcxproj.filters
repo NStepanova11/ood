@@ -80,9 +80,6 @@
     <ClCompile Include="ShapeRectangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="IShape.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ShapeTriangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
