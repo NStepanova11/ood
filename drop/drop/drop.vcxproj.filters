@@ -18,24 +18,27 @@
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ShapeEditor.cpp">
+    <ClCompile Include="BasicButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Circle.cpp">
+    <ClCompile Include="CPoint.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Point.cpp">
+    <ClCompile Include="Panel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ShapeEditor.h">
+    <ClInclude Include="const.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Circle.h">
+    <ClInclude Include="BasicButton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Point.h">
+    <ClInclude Include="CPoint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Panel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
