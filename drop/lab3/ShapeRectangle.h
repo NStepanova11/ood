@@ -12,6 +12,7 @@ private:
 	int dx = 0;
 	int dy = 0;
 	Color shapeColor;
+	int outLine;
 
 public:
 
@@ -29,5 +30,6 @@ public:
 	int getDx() override;
 	int getDy() override;
 	void setColor(Color shColor) override;
+	void setOutlineSize(int lineSize) override;
 };
 

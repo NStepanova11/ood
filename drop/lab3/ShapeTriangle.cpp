@@ -9,6 +9,7 @@ ShapeTriangle::ShapeTriangle(vector<vector<int>> points)
 	, moveCoordsX(a.getX())
 	, moveCoordsY(a.getY())
 	, shapeColor(Color::Yellow)
+	, outLine(0)
 {
 }
 
@@ -20,7 +21,8 @@ void ShapeTriangle::draw(RenderWindow & window)
 	shape.setPoint(2, Vector2f(c.getX(), c.getY()));
 	shape.setFillColor(shapeColor);
 	shape.setPosition(moveCoordsX, moveCoordsY);
-	shape.setOutlineColor(Color::White);
+	shape.setOutlineThickness(outLine);
+	shape.setOutlineColor(Color::Magenta);
 	window.draw(shape);
 }
 
@@ -116,4 +118,9 @@ int ShapeTriangle::getDy()
 void ShapeTriangle::setColor(Color shColor)
 {
 	shapeColor = shColor;
+}
+
+void ShapeTriangle::setOutlineSize(int lineSize)
+{
+	outLine = lineSize;
 }

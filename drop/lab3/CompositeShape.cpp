@@ -171,3 +171,10 @@ void CompositeShape::setColor(sf::Color shapeColor)
 		child->setColor(shapeColor);
 	}
 }
+
+void CompositeShape::setOutlineSize(int lineSize)
+{
+	for (auto child : shapesContainer) {
+		child->setOutlineSize(lineSize);
+	}
+}

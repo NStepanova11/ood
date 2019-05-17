@@ -19,14 +19,19 @@ void AppCommand::perform(PanelButton * button, CompositeShape *composite, bool *
 	else if (code == yellow_color)
 		setColor(sf::Color::Yellow, composite);
 	else if (code == line_1)
-		cout << "line_1" << endl;
+		setOutLineSize(1, composite);
 	else if (code == line_3)
-		cout << "line_3" << endl;
+		setOutLineSize(3, composite);
 	else if (code == line_5)
-		cout << "line_5" << endl;
+		setOutLineSize(5, composite);
 }
 
 void AppCommand::setColor(sf::Color shapeColor, CompositeShape * composite)
 {
 	composite->setColor(shapeColor);
+}
+
+void AppCommand::setOutLineSize(int lineSize, CompositeShape * composite)
+{
+	composite->setOutlineSize(lineSize);
 }

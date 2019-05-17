@@ -20,5 +20,6 @@ public:
 	virtual int getDx() override;
 	virtual int getDy() override;
 	virtual void setColor(sf::Color shapeColor) override;
+	void setOutlineSize(int lineSize) override;
 };
 

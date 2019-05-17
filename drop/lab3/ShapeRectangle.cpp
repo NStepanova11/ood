@@ -8,6 +8,7 @@ ShapeRectangle::ShapeRectangle(vector<vector<int>> points)
 	, height(right_bottom.getY() - left_top.getY())
 	, selected(false)
 	, shapeColor(Color::Blue)
+	, outLine(0)
 {
 }
 
@@ -16,7 +17,8 @@ void ShapeRectangle::draw(RenderWindow & window)
 	shape.setSize(Vector2f(width, height));
 	shape.setFillColor(shapeColor);
 	shape.setPosition(left_top.getX(), left_top.getY());
-	shape.setOutlineColor(Color::White);
+	shape.setOutlineThickness(outLine);
+	shape.setOutlineColor(Color::Magenta);
 	window.draw(shape);
 }
 
@@ -82,4 +84,9 @@ int ShapeRectangle::getDy()
 void ShapeRectangle::setColor(Color shColor)
 {
 	shapeColor = shColor;
+}
+
+void ShapeRectangle::setOutlineSize(int lineSize)
+{
+	outLine = lineSize;
 }

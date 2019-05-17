@@ -25,5 +25,6 @@ public:
 	int getDx() override;
 	int getDy() override;
 	void setColor(sf::Color shapeColor) override;
+	void setOutlineSize(int lineSize) override;
 };
 

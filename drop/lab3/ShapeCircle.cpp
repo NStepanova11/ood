@@ -7,6 +7,7 @@ ShapeCircle::ShapeCircle(vector<vector<int>> points)
 	, radius(points[1][0])
 	, selected(false)
 	, shapeColor(Color::Red)
+	, outLine(0)
 {
 }
 
@@ -15,7 +16,8 @@ void ShapeCircle::draw(RenderWindow & window)
 	shape.setRadius(radius);
 	shape.setFillColor(shapeColor);
 	shape.setPosition(top_left.getX(), top_left.getY());
-	shape.setOutlineColor(Color::White);
+	shape.setOutlineThickness(outLine);
+	shape.setOutlineColor(Color::Magenta);
 	window.draw(shape);
 }
 
@@ -81,4 +83,9 @@ int ShapeCircle::getDy()
 void ShapeCircle::setColor(Color shColor)
 {
 	shapeColor = shColor;
+}
+
+void ShapeCircle::setOutlineSize(int lineSize)
+{
+	outLine = lineSize;
 }

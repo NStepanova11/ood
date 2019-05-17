@@ -24,4 +24,5 @@ public:
 	virtual int getDx() = 0;
 	virtual int getDy() = 0;
 	virtual void setColor(sf::Color shapeColor) = 0;
+	virtual void setOutlineSize(int lineSize) = 0;
 };

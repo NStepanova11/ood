@@ -70,3 +70,8 @@ void DecoratorShape::setColor(sf::Color shapeColor)
 {
 	m_shape->setColor(shapeColor);
 }
+
+void DecoratorShape::setOutlineSize(int lineSize)
+{
+	m_shape->setOutlineSize(lineSize);
+}
