@@ -1,20 +1,21 @@
-#include "Panel.h"
+#include "stdafx.h"
+#include "AppPanel.h"
 #include "iostream"
 
 using namespace std;
 
-Panel::Panel()
+AppPanel::AppPanel()
 	:panelList(createPanel())
-	,isButtonClicked(false)
+	, isButtonClicked(false)
 {
 }
 
-vector<BasicButton*> Panel::createPanel()
+vector<PanelButton*> AppPanel::createPanel()
 {
-	vector<BasicButton*> buttons;
-	for (int id=move_button; id<=line_5; id++)
+	vector<PanelButton*> buttons;
+	for (int id = move_button; id <= line_5; id++)
 	{
-		BasicButton* button = new BasicButton(0, BUTTON_HEIGHT*id, id);
+		PanelButton* button = new PanelButton(0, BUTTON_HEIGHT*id, id);
 		buttons.push_back(button);
 	}
 	width = BUTTON_WIDTH;
@@ -22,7 +23,7 @@ vector<BasicButton*> Panel::createPanel()
 	return buttons;
 }
 
-void Panel::drawPanel(RenderWindow & window)
+void AppPanel::drawPanel(RenderWindow & window)
 {
 	for (auto &button : panelList)
 	{
@@ -30,7 +31,7 @@ void Panel::drawPanel(RenderWindow & window)
 	}
 }
 
-BasicButton * Panel::getClickedButton(Vector2i mousePos)
+PanelButton * AppPanel::getClickedButton(Vector2i mousePos)
 {
 	for (auto button : panelList)
 	{
@@ -42,7 +43,7 @@ BasicButton * Panel::getClickedButton(Vector2i mousePos)
 	}
 }
 
-bool Panel::isInsideBounds(Vector2i mousePos)
+bool AppPanel::isInsideBounds(Vector2i mousePos)
 {
 	if ((mousePos.x >= 0 && mousePos.x <= width) && (mousePos.y >= 0 && mousePos.y <= height)) {
 		return true;
@@ -50,7 +51,7 @@ bool Panel::isInsideBounds(Vector2i mousePos)
 	return false;
 }
 
-void Panel::unselectAllButton()
+void AppPanel::unselectAllButton()
 {
 	for (auto &button : panelList)
 	{

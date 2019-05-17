@@ -2,6 +2,7 @@
 #include "BasicButton.h"
 #include "const.h"
 #include "Panel.h"
+#include "Command.h"
 
 using namespace sf;
 
@@ -24,11 +25,8 @@ int main()
 				if (panel.isInsideBounds(mousePos)) {
 					BasicButton * activeButton = panel.getClickedButton(mousePos);
 					panel.unselectAllButton();
-					/*if (activeButton->isSelected())
-						activeButton->unselectButton();
-					else*/
-						activeButton->selectButton();
-					cout << activeButton->getFunctCode() << endl;
+					activeButton->selectButton();
+					Command::perform(activeButton);
 				}
 			}
 		}
