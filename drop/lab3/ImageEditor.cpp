@@ -62,7 +62,7 @@ void ImageEditor::checkEvent(RenderWindow &window, vector<IShape*> &allShapesVec
 				PanelButton * activeButton = panel.getClickedButton(mousePos);
 				panel.unselectAllButton();
 				activeButton->selectButton();
-				AppCommand::perform(activeButton, &composite, &isMove, mousePos);
+				AppCommand::perform(activeButton, &composite, &isMove, mousePos, allShapesVector);
 			}
 		}
 
