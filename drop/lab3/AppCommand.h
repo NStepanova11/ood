@@ -16,5 +16,6 @@ public:
 	static void createCircle(vector<IShape*> &allShapesVector);
 	static void createRectangle(vector<IShape*>& allShapesVector);
 	static void createTriangle(vector<IShape*>& allShapesVector);
+	static void setMoveMode(CompositeShape * composite);
 };
 

@@ -5,7 +5,7 @@ void AppCommand::perform(PanelButton * button, CompositeShape *composite, bool *
 {
 	int code = button->getFunctCode();
 	if (code == move_button)
-		cout << "move" << endl;
+		setMoveMode(composite);
 	else if (code == new_triangle)
 		createTriangle(allShapesVector);
 	else if (code == new_rectangle)
@@ -58,4 +58,12 @@ void AppCommand::createTriangle(vector<IShape*>& allShapesVector)
 	IShape* triangle = new ShapeTriangle(standartParams);
 	IShape* triangleDecorator = new DecoratorShape(triangle);
 	allShapesVector.push_back(triangleDecorator);
+}
+
+void AppCommand::setMoveMode(CompositeShape * composite)
+{
+	if (composite->canMove())
+		composite->unsetMoveMode();
+	else
+		composite->setMoveMode();
 }

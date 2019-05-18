@@ -1,12 +1,16 @@
 #pragma once
 #include "IShape.h"
+#include "..\drop\const.h"
+
 class CompositeShape :	public IShape
 {
 private:
 	vector<IShape*> shapesContainer;
 	unique_ptr<IShape> shape_ptr;
 	vector<unique_ptr<IShape>> shapesCont;
+	bool moveMode;
 public:
+	CompositeShape();
 	void add(IShape *shape);
 	void addAll(vector<IShape*> allShapes);
 	void remove(IShape *shape);
@@ -26,5 +30,8 @@ public:
 	int getDy() override;
 	void setColor(sf::Color shapeColor) override;
 	void setOutlineSize(int lineSize) override;
+	void setMoveMode();
+	void unsetMoveMode();
+	bool canMove();
 };
 

@@ -61,6 +61,7 @@ void ImageEditor::checkEvent(RenderWindow &window, vector<IShape*> &allShapesVec
 			else if (panel.isInsideBounds(mousePos)) {
 				PanelButton * activeButton = panel.getClickedButton(mousePos);
 				panel.unselectAllButton();
+				composite.unsetMoveMode();
 				activeButton->selectButton();
 				AppCommand::perform(activeButton, &composite, &isMove, mousePos, allShapesVector);
 			}
@@ -79,7 +80,7 @@ void ImageEditor::checkEvent(RenderWindow &window, vector<IShape*> &allShapesVec
 			composite.removeAll();
 		}
 	}
-	if (isMove) {
+	if (isMove && composite.canMove()) {
 		composite.setPosition(mousePos.x, mousePos.y);
 	}
 }

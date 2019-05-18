@@ -5,6 +5,11 @@
 
 using namespace std;
 
+CompositeShape::CompositeShape()
+:moveMode(false)
+{
+}
+
 void CompositeShape::add(IShape * shape)
 {
 	shapesContainer.push_back(shape);
@@ -107,11 +112,15 @@ bool CompositeShape::isInsideBounds(Vector2i pos)
 
 void CompositeShape::setPosition(int mouseX, int mouseY)
 {
+	int xx = 0;
+	int yy = 0;
+
 	for (auto child : shapesContainer) {
-		int xx = mouseX - child->getDx();
-		int yy = mouseY - child->getDy();
+		xx = mouseX - child->getDx();
+		yy = mouseY - child->getDy();
 		child->setPosition(xx, yy);
 	}
+	
 }
 
 Vector2i CompositeShape::getPosition()
@@ -177,4 +186,18 @@ void CompositeShape::setOutlineSize(int lineSize)
 	for (auto child : shapesContainer) {
 		child->setOutlineSize(lineSize);
 	}
+}
+
+void CompositeShape::setMoveMode()
+{
+	moveMode = true;
+}
+
+void CompositeShape::unsetMoveMode() {
+	moveMode = false;
+}
+
+bool CompositeShape::canMove()
+{
+	return moveMode;
 }
