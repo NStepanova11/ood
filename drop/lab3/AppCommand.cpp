@@ -38,7 +38,7 @@ void AppCommand::setOutLineSize(int lineSize, CompositeShape * composite)
 
 void AppCommand::createCircle(vector<IShape*>& allShapesVector)
 {
-	vector<vector<int>> standartParams = { {100,100}, {50} };
+	vector<vector<int>> standartParams = { {700,0}, {50} };
 	IShape* circle = new ShapeCircle(standartParams);
 	IShape* circleDecorator = new DecoratorShape(circle);
 	allShapesVector.push_back(circleDecorator);
@@ -46,7 +46,7 @@ void AppCommand::createCircle(vector<IShape*>& allShapesVector)
 
 void AppCommand::createRectangle(vector<IShape*>& allShapesVector)
 {
-	vector<vector<int>> standartParams = { { 200,200 },{ 300, 300 } };
+	vector<vector<int>> standartParams = { { 700,100 },{ 800, 200 } };
 	IShape* rectangle = new ShapeRectangle(standartParams);
 	IShape* rectangleDecorator = new DecoratorShape(rectangle);
 	allShapesVector.push_back(rectangleDecorator);
@@ -54,7 +54,7 @@ void AppCommand::createRectangle(vector<IShape*>& allShapesVector)
 
 void AppCommand::createTriangle(vector<IShape*>& allShapesVector)
 {
-	vector<vector<int>> standartParams = { { 100, 200 }, { 200,200 },{ 300, 400 } };
+	vector<vector<int>> standartParams = { { 700, 300 }, { 750,200 },{ 800, 300 } };
 	IShape* triangle = new ShapeTriangle(standartParams);
 	IShape* triangleDecorator = new DecoratorShape(triangle);
 	allShapesVector.push_back(triangleDecorator);

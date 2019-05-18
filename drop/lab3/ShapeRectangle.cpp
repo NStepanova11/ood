@@ -18,7 +18,7 @@ void ShapeRectangle::draw(RenderWindow & window)
 	shape.setFillColor(shapeColor);
 	shape.setPosition(left_top.getX(), left_top.getY());
 	shape.setOutlineThickness(outLine);
-	shape.setOutlineColor(Color::Magenta);
+	shape.setOutlineColor(Color::White);
 	window.draw(shape);
 }
 

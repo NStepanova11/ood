@@ -17,6 +17,7 @@ private:
 	int dy = 0;
 	Color shapeColor;
 	int outLine;
+	int minX, minY;
 
 public:
 	ShapeTriangle(vector<vector<int>> points);

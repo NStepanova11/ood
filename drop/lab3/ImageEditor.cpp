@@ -3,7 +3,7 @@
 
 void ImageEditor::renderWin()
 {
-	RenderWindow window(VideoMode(1000, 800), "Panel");
+	RenderWindow window(VideoMode(800, 800), "Panel");
 
 	vector<IShape*> dShapes;
 	getShapesFromFile(dShapes);

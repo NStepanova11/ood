@@ -6,8 +6,8 @@ ShapeTriangle::ShapeTriangle(vector<vector<int>> points)
 	, b(points[1][0], points[1][1])
 	, c(points[2][0], points[2][1])
 	, selected(false)
-	, moveCoordsX(a.getX())
-	, moveCoordsY(a.getY())
+	, moveCoordsX(0)
+	, moveCoordsY(0)
 	, shapeColor(Color::Yellow)
 	, outLine(0)
 {
@@ -22,7 +22,7 @@ void ShapeTriangle::draw(RenderWindow & window)
 	shape.setFillColor(shapeColor);
 	shape.setPosition(moveCoordsX, moveCoordsY);
 	shape.setOutlineThickness(outLine);
-	shape.setOutlineColor(Color::Magenta);
+	shape.setOutlineColor(Color::White);
 	window.draw(shape);
 }
 
@@ -93,13 +93,26 @@ bool ShapeTriangle::isInsideBounds(Vector2i pos)
 
 void ShapeTriangle::setPosition(int x, int y)
 {
-	moveCoordsX = x;
-	moveCoordsY = y;
+	moveCoordsX = x-minX;
+	moveCoordsY = y-minY;
 }
 
 Vector2i ShapeTriangle::getPosition()
 {
-	return Vector2i(shape.getPosition().x, shape.getPosition().y);
+	vector<int> xPoints = { a.getX(), b.getX(), c.getX() };
+	vector<int> yPoints = { a.getY(), b.getY(), c.getY() };
+	
+	minX = xPoints[0];
+	minY = yPoints[0];
+
+	for (size_t i = 1; i < xPoints.size(); i++)
+	{
+		if (xPoints[i] < minX)
+			minX = xPoints[i];
+		if (yPoints[i] < minY)
+			minY = yPoints[i];
+	}
+	return Vector2i(shape.getPosition().x+minX, shape.getPosition().y+minY);
 }
 void ShapeTriangle::setDiff(int x, int y)
 {

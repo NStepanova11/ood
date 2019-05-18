@@ -141,7 +141,7 @@ void CompositeShape::drawFrame(RenderWindow & window)
 	frame.setPosition(getPosition().x, getPosition().y);
 	frame.setOutlineThickness(2);
 	frame.setFillColor(Color::Transparent);
-	frame.setOutlineColor(Color::White);
+	frame.setOutlineColor(Color::Red);
 	window.draw(frame);
 }
 

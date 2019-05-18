@@ -17,7 +17,7 @@ void ShapeCircle::draw(RenderWindow & window)
 	shape.setFillColor(shapeColor);
 	shape.setPosition(top_left.getX(), top_left.getY());
 	shape.setOutlineThickness(outLine);
-	shape.setOutlineColor(Color::Magenta);
+	shape.setOutlineColor(Color::White);
 	window.draw(shape);
 }
 
